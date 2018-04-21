@@ -106,7 +106,6 @@ bot.on("message", async function(message) {
     
     var user = message.mentions.users.first();
 
-
     switch (args[0].toLowerCase()) {
         case "play":
             if (!args[1]) {
@@ -195,9 +194,10 @@ bot.on("message", async function(message) {
             var embed = new Discord.RichEmbed()
                  .addField(".ping", "Grâce à cette commande, tu pourras savoir ton ping !") 
                  .addField(".twitter", "Vous donne le twitter du serveur !")
-                 .addField(".play", "Jouer une musique !  Pour l'utiliser, faites *play (lien) !")
-                 .addField(".skip", "Sauter une musique  Pour l'utiliser, faites *skip !")
-                 .addField(".stop", "Arreter la musique  Pour l'utiliser, faites *stop !")
+                 .addField(".play", "Jouer une musique !  Pour l'utiliser, faites .play (lien) !")
+                 .addField(".skip", "Sauter une musique  Pour l'utiliser, faites .skip !")
+                 .addField(".stop", "Arreter la musique  Pour l'utiliser, faites .stop !")
+                 .addField(".google", "Commande pas trop utile mais tu peut faire des recherche google. Pour l'utiliser, faites .google (recherche) !")
                  .addField(".shelp", "Afficher les commandes du staff. Mais seule ceux qui ont la perm de kick pourron y accèder.")
                 .setColor("#0000ff")
                 .setFooter("Idée de commande ? Proposer en MP!")
@@ -299,7 +299,13 @@ bot.on("message", async function(message) {
         message.delete();
         break; 
             
-      
+       case "google":
+        let args = message.content.split(' ');
+        args.shift();
+        console.log("J'ai rechercher!");
+        message.reply('https://www.google.fr/#q=' + args.join('%20'));
+        break;
+
         default:
             message.channel.sendMessage("Commande invalide ^^ Fait .help pour voir toutes les commandes disponibles !")
             message.delete();
