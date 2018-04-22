@@ -226,10 +226,11 @@ bot.on("message", async function(message) {
         case "help":
             var embed = new Discord.RichEmbed()
                  .addField(".ping", "Grâce à cette commande, tu pourras savoir ton ping !") 
-                 .addField(".twitter", "Vous donne le twitter du serveur !")
+                 .addField(".reseaux", "Vous donne les réseaux sociaux  du serveur !")
                  .addField(".play", "Jouer une musique !  Pour l'utiliser, faites .play (lien) !")
                  .addField(".skip", "Sauter une musique  Pour l'utiliser, faites .skip !")
                  .addField(".stop", "Arreter la musique  Pour l'utiliser, faites .stop !")
+                 .addField(".membre", "Permet de voir le nombre de personnes sur le discord !")
                  .addField(".dvsdarkrp", "Pour rejoindre notre DarkRP !")
                  .addField(".dvsscp ", "Pour rejoindre notre SCP RP !")
                  .addField(".google", "Commande pas trop utile mais tu peut faire des recherche google. Pour l'utiliser, faites .google (recherche) !")
@@ -306,12 +307,18 @@ bot.on("message", async function(message) {
             member.guild.channels.find("name", "📄logs📄").sendEmbed(embed);
             break;
 
-
-       case "twitter":
-       message.reply('Voici le compte twitter du serveur : ❌**DESACTIVER**❌');
-       message.delete();
-       break;
-
+       case "reseaux":
+            var embed = new Discord.RichEmbed()
+                 .addField("Instagram", "Notre Instagram est **@diversonfr** ( https://www.instagram.com/diversonfr/ ). ") 
+                 .addField("Twitter", "Notre Twitter est **@@diversionfrserv** ( https://twitter.com/diversionfrserv ). ")
+                 .addField("Facebook", "Notre Facebook est **@diversion.serv.7** ( https://www.facebook.com/diversion.serv.7 ). ")
+                .setFooter("By Ilian")
+                .setAuthor("Réseaux Sociaux du Serveur")
+                .setDescription("Pour l'actualité !")
+                .setTimestamp()
+                message.delete()
+                message.channel.sendEmbed(embed)
+      
        case "dvsdarkrp":
        message.reply('steam://connect/54.37.198.10:27015');
        message.delete();
