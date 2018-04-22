@@ -214,6 +214,7 @@ bot.on("message", async function(message) {
              .addField(".purge", "Cette commande permet de supprimé des messages beaucoup plus rapidement ! Pour l'utiliser, faites .purge (nombredemessages)")
              .addField(".mute", "Cette commande permet de muté un utilisateur pendant un certain temps. Pour l'utiliser, faites .mute @(utilisateur) + (raison)")
              .addField(".unmute", "Cette commande permet d'unmute un utilisateur. Pour l'utiliser, faites .unmute @(utilisateur)")
+             .addField("staffhelp", "Cette commande permet d'afficher l'aide pour écrire les messages dans annonces")
             .setColor("#cc0000")
             .setFooter("Aide du staff.")
             .setAuthor("Pannel d'aide du staff")
@@ -223,6 +224,28 @@ bot.on("message", async function(message) {
             message.channel.sendEmbed(embed)
         break;    
         
+              case "staffhelp":
+            if(!message.member.hasPermission("KICK_MEMBERS")) return message.channel.sendMessage("Tu ne peux exécuter cette commande. ❌");
+            var messagecount = parseInt(args2.join(" "));
+            message.channel.fetchMessages({
+                limit: messagecount
+            }).then(messages => message.channel.bulkDelete(messagecount));
+                        message.delete()
+        var embed = new Discord.RichEmbed()
+            .addField("Info", "Il y a deux façon d'utiliser ces commandes, la façon avec la mention everyone et la façon sans, pour cela si vous voulez utiliser la mentions everyone marquer la commandes dans le salon ou le message va apparaître et en cas contraitre dans le salon #staff-command Cette info ne s'applique pas au Sondage car chaque Sondage doit avoir une mention !")
+            .addField(".newstaff", "Cette commande permet de faire un message dans le salon staff.")
+            .addField(".web", "Cette commande permet de faire un message dans le salon 🔔annonce.")
+             .addField(".new", "Cette commande permet de faire un message dans le salon 🔔nouveauté.")
+             .addField(".sondage", "Cette commande permet de faire un message dans le salon 🔔sondage. Merci d'utiliser cette commande lors de la créations d'un nouveau sondage.")
+            .setColor("#cc0000")
+            .setFooter("Aide du staff.")
+            .setAuthor("Pannel d'aide du staff")
+            .setDescription("Voici les commandes du staff !")
+            .setTimestamp()
+            message.delete()
+            message.channel.sendEmbed(embed)
+        break;   
+      
         case "help":
             var embed = new Discord.RichEmbed()
                  .addField(".ping", "Grâce à cette commande, tu pourras savoir ton ping !") 
