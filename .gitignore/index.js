@@ -297,7 +297,7 @@ bot.on("message", async function(message) {
             }).then(messages => message.channel.bulkDelete(messagecount));
                         message.delete()
             var embed = new Discord.RichEmbed()
-            .addField("Commande :", "PURGE")
+            .addField("Commande :", "Purge d'un Channel")
             .addField("Modérateur :", message.author.username)
             .addField("Message supprimé", messagecount)
             .addField("Heure:", message.channel.createdAt)
@@ -318,6 +318,7 @@ bot.on("message", async function(message) {
                 .setTimestamp()
                 message.delete()
                 message.channel.sendEmbed(embed)
+           break;
       
        case "dvsdarkrp":
        message.reply('steam://connect/54.37.198.10:27015');
