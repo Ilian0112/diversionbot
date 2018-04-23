@@ -344,14 +344,12 @@ bot.on("message", async function(message) {
            break;
       
        case "dvsdarkrp":
-      member.createDM().then(channel => {
-         return channel.send('steam://connect/54.37.198.10:27015');
+       message.reply('steam://connect/54.37.198.10:27015');
        message.delete();
        break;
 
        case "dvsscp":
-      member.createDM().then(channel => {
-         return channel.send('steam://connect/gmod13.mtxserv.fr:27290');
+       message.reply('steam://connect/gmod13.mtxserv.fr:27290');
        message.delete();
        break;
 
