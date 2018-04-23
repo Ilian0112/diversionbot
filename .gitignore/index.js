@@ -359,10 +359,10 @@ bot.on("message", async function(message) {
         break; 
             
        case "google":
-        let args = message.content.split(' ');
-        args.shift();
+        let glg = message.content.split(' ');
+        glg.shift();
         console.log("J'ai rechercher!");
-        message.reply('https://www.google.fr/#q=' + args.join('%20'));
+        message.reply('https://www.google.fr/#q=' + glg.join('%20'));
         break;
 
        case "web":
