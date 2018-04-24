@@ -254,8 +254,8 @@ bot.on("message", async function(message) {
                  .addField(".skip", "Sauter une musique  Pour l'utiliser, faites .skip !")
                  .addField(".stop", "Arreter la musique  Pour l'utiliser, faites .stop !")
                  .addField(".membre", "Permet de voir le nombre de personnes sur le discord !")
-                 .addField(".dvsdarkrp", "Pour rejoindre notre DarkRP !")
-                 .addField(".dvsscp ", "Pour rejoindre notre SCP RP !")
+                 .addField(".serveur", "Pour rejoindre nos Serveur !")
+                 .addField(".traductionhelp ", "Pour afficher l'aide des traductions !")
                  .addField(".google", "Commande pas trop utile mais tu peut faire des recherche google. Pour l'utiliser, faites .google (recherche) !")
                  .addField(".shelp", "❌Afficher les commandes du staff. Mais seule ceux qui ont la perm de kick pourrons y accèder. ❌")
                 .setColor("#0000ff")
@@ -343,16 +343,19 @@ bot.on("message", async function(message) {
                 message.channel.sendEmbed(embed)
            break;
       
-       case "dvsdarkrp":
-       message.reply('steam://connect/54.37.198.10:27015');
-       message.delete();
-       break;
-
-       case "dvsscp":
-       message.reply('steam://connect/gmod13.mtxserv.fr:27290');
-       message.delete();
-       break;
-
+       case "serveur":
+           var embed = new Discord.RichEmbed()
+                 .addField("Notre DarkRP", "steam://connect/54.37.198.10:27015") 
+                 .addField("Notre SCP RP", "steam://connect/gmod13.mtxserv.fr:27290")
+                .setColor("#ffff00")
+                .setFooter("Amuse toi bien sur nos serveur !")
+                .setAuthor("Pannel des Serveurs")
+                .setDescription("Petit rappelle, je vais seulement envoyé un liens pour que tu rejoins le serveur !")
+                .setTimestamp()
+                message.delete()
+                message.channel.sendEmbed(embed)
+            break;            
+      
        case "ping":
         message.channel.sendMessage("Pong! Tu as actuellement `" + bot.ping + " ms !` :D");
         message.delete();
@@ -365,6 +368,21 @@ bot.on("message", async function(message) {
         message.reply('https://www.google.fr/#q=' + glg.join('%20'));
         break;
 
+        case "traductionhelp":
+            var embed = new Discord.RichEmbed()
+                 .addField(".tradenfr", "Traduction Anglais ==> Français !") 
+                 .addField(".tradfren", "Traduction Français ==> Anglais !")
+                 .addField(".tradesfr", "Traduction Espagnol ==> Français !")
+                 .addField(".tradfres", "Taduction Français ==> Espagnol !")
+                .setColor("#00ffcc")
+                .setFooter("Amuse toi a traduire petit enfant !")
+                .setAuthor("Pannel des Traduction")
+                .setDescription("Petit rappelle le, je vais seulement envoyé un liens google traduction !")
+                .setTimestamp()
+                message.delete()
+                message.channel.sendEmbed(embed)
+            break;      
+      
        case "tradenfr":
         let tradenfr = message.content.split(' ');
         tradenfr.shift();
