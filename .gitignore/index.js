@@ -365,6 +365,34 @@ bot.on("message", async function(message) {
         message.reply('https://www.google.fr/#q=' + glg.join('%20'));
         break;
 
+       case "tradenfr":
+        let tradenfr = message.content.split(' ');
+        tradenfr.shift();
+        console.log("Traduction Anglais ==> Français");
+        message.reply('https://translate.google.fr/#en/fr/' + tradenfr.join('%20'));
+        break;
+      
+        case "tradfren":
+         let tradfren = message.content.split(' ');
+         tradfren.shift();
+         console.log("Traduction Français ==> Anglais");
+         message.reply('https://translate.google.fr/#fr/en/' + tradfren.join('%20'));
+         break;
+      
+        case "tradesfr":
+         let tradesfr = message.content.split(' ');
+         tradesfr.shift();
+         console.log("Traduction Espagnol ==> Français");
+         message.reply('https://translate.google.fr/#es/fr/' + tradesfr.join('%20'));
+         break;
+      
+        case "tradfres":
+         let tradfres = message.content.split(' ');
+         tradfres.shift();
+         console.log("Traduction Français ==> Espagnol");
+         message.reply('https://translate.google.fr/#fr/es/' + tradfres.join('%20'));
+         break;      
+      
        case "web":
            if(!message.member.hasPermission("BAN_MEMBERS")) return message.channel.sendMessage("Tu ne peux exécuter cette commande. ❌");
             var messagecount = parseInt(args2.join(" "));
