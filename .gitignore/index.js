@@ -404,6 +404,13 @@ bot.on("message", async function(message) {
          message.reply('https://translate.google.fr/#es/fr/' + tradesfr.join('%20'));
          break;
       
+     case "tradesen":
+        let tradesen = message.content.split(' ');
+        tradesen.shift();
+         console.log("Traduction Espagnol ==> Anglais");
+         message.reply('https://translate.google.fr/#es/en/' + tradesen.join('%20'))
+         break;
+      
         case "tradfres":
          let tradfres = message.content.split(' ');
          tradfres.shift();
