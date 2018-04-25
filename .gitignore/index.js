@@ -374,6 +374,8 @@ bot.on("message", async function(message) {
                  .addField(".tradfren", "Traduction Français ==> Anglais !")
                  .addField(".tradesfr", "Traduction Espagnol ==> Français !")
                  .addField(".tradfres", "Taduction Français ==> Espagnol !")
+                 .addField(".tradesen", "Traduction Espagnol ==> Anglais !")
+                 .addField(".tradenes", "Taduction Anglais ==> Espagnol !")            
                 .setColor("#00ffcc")
                 .setFooter("Amuse toi a traduire petit enfant !")
                 .setAuthor("Pannel des Traduction")
@@ -404,19 +406,19 @@ bot.on("message", async function(message) {
          message.reply('https://translate.google.fr/#es/fr/' + tradesfr.join('%20'));
          break;
       
-     case "tradesen":
-        let tradesen = message.content.split(' ');
-        tradesen.shift();
-         console.log("Traduction Espagnol ==> Anglais");
-         message.reply('https://translate.google.fr/#es/en/' + tradesen.join('%20'))
-         break;
-      
         case "tradfres":
          let tradfres = message.content.split(' ');
          tradfres.shift();
          console.log("Traduction Français ==> Espagnol");
          message.reply('https://translate.google.fr/#fr/es/' + tradfres.join('%20'));
          break;      
+      
+        case "tradenes":
+         let tradenes = message.content.split(' ');
+         tradenes.shift();
+         console.log("Traduction Anglais ==> Espagnol");
+         message.reply('https://translate.google.fr/#en/es/' + tradesen.join('%20'))
+         break;
       
        case "web":
            if(!message.member.hasPermission("BAN_MEMBERS")) return message.channel.sendMessage("Tu ne peux exécuter cette commande. ❌");
