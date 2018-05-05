@@ -162,7 +162,7 @@ bot.on("message", async function(message) {
      
         break;    
         case "membres":
-            message.reply("Nous sommes " + bot.users.size + " membres sur le discord !");
+            message.reply("Nous sommes " + message.guild.memberCount + " membres sur le discord !");
         break
         case "unmute":
         if(!message.member.hasPermission("BAN_MEMBERS")) return message.channel.sendMessage("Tu ne peux exécuter cette commande. ❌");
