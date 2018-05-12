@@ -499,4 +499,4 @@ bot.on("message", async function(message) {
     }
 });
 
-bot.login('NDM2Mjc1MzIwMTIzOTQ5MDY4.Db4aDg.sdffNKYrQDAfEv9lRjwfiiO44Qs');
+bot.login(process.env.TOKEN);
