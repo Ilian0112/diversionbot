@@ -345,8 +345,7 @@ bot.on("message", async function(message) {
       
        case "serveur":
            var embed = new Discord.RichEmbed()
-                 .addField("Notre DarkRP", "steam://connect/54.37.198.10:27015") 
-                 .addField("Notre SCP RP", "steam://connect/gmod13.mtxserv.fr:27290")
+                 .addField("Notre DarkRP", "steam://connect/54.37.198.10:27015")
                 .setColor("#ffff00")
                 .setFooter("Amuse toi bien sur nos serveur !")
                 .setAuthor("Pannel des Serveurs")
@@ -495,7 +494,6 @@ bot.on("message", async function(message) {
 
         default:
             message.channel.sendMessage("Commande invalide ^^ Fait .help pour voir toutes les commandes disponibles !")
-            message.delete();
     }
 });
 
