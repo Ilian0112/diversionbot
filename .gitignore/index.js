@@ -1,6 +1,6 @@
 const Discord = require("discord.js");
 const YTDL = require("ytdl-core");
-const PREFIX = ".";
+const PREFIX = "d.";
 const queue = new Map();
 const EVERYONE = "@";
 
@@ -24,7 +24,7 @@ function play(connection, message) {
 }
 
 bot.on("ready", function () {
-    bot.user.setActivity("DiversionBOT V2 - .help | Par Ilian, {
+    bot.user.setActivity("DiversionBOT V2 - " + PREFIX + "help | Par Ilian, {
         'type': 'STREAMING',
         'url': "https://www.twitch.tv/sebilein001"
 }),
