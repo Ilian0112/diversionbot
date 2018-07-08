@@ -8,7 +8,7 @@ var client = new Discord.Client();
 
 var bot = new Discord.Client();
 
-var version = "V.1.0.2"
+var version = "V.1.0.3"
 
 var emoji_instaID = "460456294285836288"
 , emoji_twitterID = "460456343451598849"
@@ -43,7 +43,7 @@ bot.on("ready", function () {
         .setTitle("Je suis connecté")
         .setTimestamp()
         .setColor("#36393E")
-    bot.channels.findAll("name", "log_channel").map(channel => channel.send(connection_embed));
+    bot.channels.findAll("name", "📄staff-logs📄").map(channel => channel.send(connection_embed));
     console.log("DiversionBOT - Connecté");
 });
 
@@ -51,12 +51,23 @@ bot.on("ready", function () {
   //  });
 
 bot.on("guildMemberAdd", function(member) {
-    member.guild.channels.find("name", "📄logs📄").sendMessage(member.toString() + " Bienvenue sur ``" + message.guild.name + "`` ! :white_check_mark:");
-    member.addRole(member.guild.roles.find("name", "Membre Communauté Gmod"));
+    var join_embed = new Discord.RichEmbed()
+    .setAuthor("Arrivée :")
+    .setTitle("Bienvenue " + member.user.username + " sur " + member.guild.name + " ! :white_check_mark:")
+    .setColor("#58ACFA")
+    .setTimestamp()
+    member.guild.channels.find("name", "📄logs📄").send(join_embed);
+    member.addRole(member.guild.roles.find("name", "Membre"));
 });
 
 bot.on("guildMemberRemove", function(member) {
-     member.guild.channels.find("name", "📄logs📄").sendMessage(member.toString() + " Bye bye!" + member.toString() + " :x:");
+    var left_embed = new Discord.RichEmbed()
+    .setAuthor("Départ :")
+    .setTitle("On espère te revoir " + member.user.username + " sur " + member.guild.name + " ! :x")
+    .setColor("#B4045F")
+    .setTimestamp()
+    member.guild.channels.find("name", "📄logs📄").send(left_embed);
+   // member.guild.channels.find("name", "📄logs📄").send(member.toString() + " Bye bye!" + member.toString() + " :x:");
 });
 
 
@@ -81,7 +92,7 @@ bot.on("message", async function(message) {
     
     var member = message.member;
 
-    var roleJoueur= member.guild.roles.find("name", "Membre Communauté Gmod")
+    var roleJoueur= member.guild.roles.find("name", "Membre")
     
     var roleMute = member.guild.roles.find("name", "Mute")
     
@@ -504,29 +515,23 @@ bot.on("message", async function(message) {
                 .addField(':clock2: Chargement en cours.', "Merci de patienter quelques instants !")       
             var servinfo_embed = new Discord.RichEmbed()
                 .setAuthor("Information du Serveur", message.author.avatarURL)
-                    .addField("Nom du Serveur :", "Le serveur s'appelle : ``" + message.guild.name + "``.", true)
+                    .addField("Nom du Serveur :", "Le serveur s'appelle : ``" + message.guild.name + "`.", true)
                     .addField("ServeurID :", "L'ID du serveur est : ``" + message.guild.id + "``.", true)
                     .addField("Création du Serveur", "Le serveur à été crée le : ``" + message.guild.createdAt + "``.", true)
                     .addField("Fondateur :", "Le fondateur du serveur est : " + message.guild.owner + ".", true)
-                    .addField("FondateurID :", "L'ID du Fondateur est : ``" + message.guild.ownerID + "``.", true)
+                    .addField("FondateurID :", "L'ID du Fondteur est : ``" + message.guild.ownerID + "``.", true)
                     .addField("Membres :", "Nous sommes actuellement ``" + message.guild.memberCount  + " membres`` au total.", true)
                 .setColor("#FF0000")
                 .setFooter(foother)
                 .setThumbnail(message.guild.iconURL)
         break; 
 
-    /*    case "majinfo":
+      /*  case "majinfo":
            if (message.author.id === "193092758267887616") {
                 var maj_embed = new Discord.RichEmbed()
                 .setAuthor("Update " + version, "https://cdn.discordapp.com/avatars/436275320123949068/7bc51d2a832b740959b4633e6d5ef4c8.png")
-                .setDescription("**Enorme Update !**")
-                    .addField("Suppression de commande,", "**Plusieurs commande on été supprimer car elle ne servais pas vraiment pour ce bot.**", true)
-                    .addField("Modification des menu d'aide,", "**Tout les menus d'aide on été refais.**", true)
-                    .addField("Annonce en embed,", "**Tout le staff peut utiliser le bot pour faire des annonces.**", true)
-                    .addField("Changement de couleur,", "**Le message de connection a été editer.**", true)
-                    .addField("Serveur,", "**La commande pour rejoindre notre serveur a été légèrement modifié.**", true)
-                    .addField("botinfo & servinfo,", "**Ce sont les deux nouvelle commande !**", true)
-                .setThumbnail("https://cdn.discordapp.com/avatars/436275320123949068/7bc51d2a832b740959b4633e6d5ef4c8.png")
+                .setDescription("**Petite Update !**")
+                    .addField("Join/Left Message Fixed,", "**Les messages de bienvenue et d'au revoir on été réglé et améliorer.**", true)
                 .setColor("#04B404")
                 .setFooter(version)
             bot.channels.findAll('name', 'bot-update').map(channel => channel.send(maj_embed));
